@@ -19,3 +19,36 @@ int main()
 		}
 	};
 
+{
+		float x, y;
+		float speed;
+		float width, height;
+		Color color;
+		
+		Rectangle GetRect()
+		{
+			return Rectangle{ x, y - 50 , width, height };
+		}
+
+		void Draw()
+		{
+			DrawRectangleRec(GetRect(), color);
+		}
+		
+		void Checktop()
+		{
+			if (y + 50 > GetScreenHeight())
+			{
+				y = GetScreenHeight() - 50;
+			}
+		}
+		
+		void CheckBottom()
+		{
+			if (y < 50)
+			{
+				y = 50;
+			}
+		}
+
+	};
