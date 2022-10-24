@@ -1,0 +1,56 @@
+#include "raylib.h" 
+
+int main()
+{
+	InitWindow(800, 600, "Pong");
+	SetWindowState(FLAG_VSYNC_HINT);
+
+
+	/*Ball Structure*/
+	struct Ball
+	{
+		float x, y;
+		float speedx, speedy;
+		float radius;
+
+		void Draw()
+		{
+			DrawCircle((int)x, (int)y, radius, WHITE);
+		}
+	};
+
+
+	struct Paddles
+	{
+		float x, y;
+		float speed;
+		float width, height;
+		Color color;
+		
+		Rectangle GetRect()
+		{
+			return Rectangle{ x, y - 50 , width, height };
+		}
+
+		void Draw()
+		{
+			DrawRectangleRec(GetRect(), color);
+		}
+		
+		void Checktop()
+		{
+			if (y + 50 > GetScreenHeight())
+			{
+				y = GetScreenHeight() - 50;
+			}
+		}
+		
+		void CheckBottom()
+		{
+			if (y < 50)
+			{
+				y = 50;
+			}
+		}
+
+	};
