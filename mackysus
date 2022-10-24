@@ -1,0 +1,21 @@
+#include "raylib.h" 
+
+int main()
+{
+	InitWindow(800, 600, "Pong");
+	SetWindowState(FLAG_VSYNC_HINT);
+
+
+	/*Ball Structure*/
+	struct Ball
+	{
+		float x, y;
+		float speedx, speedy;
+		float radius;
+
+		void Draw()
+		{
+			DrawCircle((int)x, (int)y, radius, WHITE);
+		}
+	};
+
